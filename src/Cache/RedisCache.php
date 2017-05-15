@@ -10,6 +10,11 @@ class RedisCache implements Cache
         $this->redis = $redis;
     }
 
+    public function get($key)
+    {
+        return $this->redis->get($key);
+    }
+
     public function set($key, $value)
     {
         return $this->redis->set($key, $value);
