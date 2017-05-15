@@ -19,4 +19,4 @@ before_script:
   - mysql cache_sync < database.sql
   - composer install --ignore-platform-reqs
 
-script: phpunit
+script: vendor/bin/phpunit
