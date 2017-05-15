@@ -2,9 +2,8 @@
 
 namespace Codeages\CacheSync\Database;
 
+use PHPUnit\Framework\TestCase;
 use Codeages\CacheSync\Database;
-use \PHPUnit\Framework\TestCase;
-use \Codeages\CacheSync\Database\PDODatabase;
 
 class PDODatabaseTest extends TestCase
 {

@@ -3,7 +3,6 @@
 namespace Codeages\CacheSync\Database;
 
 use PHPUnit\Framework\TestCase;
-use Codeages\CacheSync\Database\DBALDatabase;
 use Codeages\CacheSync\Database;
 
 class DBALDatabaseTest extends TestCase
