@@ -17,6 +17,6 @@ before_script:
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - mysql -e 'CREATE DATABASE `cache_sync` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci'
   - mysql cache_sync < database.sql
-  - composer install
+  - composer install --ignore-platform-reqs
 
 script: phpunit
