@@ -1,4 +1,5 @@
 <?php
+namespace Codeages\CacheSync\Cache;
 
 use PHPUnit\Framework\TestCase;
 use Codeages\CacheSync\Cache\RedisCache;

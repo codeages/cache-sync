@@ -4,6 +4,11 @@
             "Codeages\\CacheSync\\": "src/"
         }
     },
+    "autoload-dev": {
+      "psr-4": {
+        "Codeages\\CacheSync\\": "tests/"
+      }
+    },
     "require": {
         "codeages/biz-framework": "^0.3.13",
         "codeages/plumber": "^0.7.1"

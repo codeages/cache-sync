@@ -1,5 +1,7 @@
 <?php
 
+namespace Codeages\CacheSync\Database;
+
 use PHPUnit\Framework\TestCase;
 use Codeages\CacheSync\Database\DBALDatabase;
 use Codeages\CacheSync\Database;
@@ -13,7 +15,7 @@ class DBALDatabaseTest extends TestCase
 
     public function setUp()
     {
-        $this->dbal = $dbal = Doctrine\DBAL\DriverManager::getConnection(array(
+        $this->dbal = $dbal = \Doctrine\DBAL\DriverManager::getConnection(array(
             'dbname' => $_ENV['DB_NAME'],
             'user' => $_ENV['DB_USER'],
             'password' => $_ENV['DB_PASSWORD'],

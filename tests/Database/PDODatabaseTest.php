@@ -1,5 +1,7 @@
 <?php
 
+namespace Codeages\CacheSync\Database;
+
 use Codeages\CacheSync\Database;
 use \PHPUnit\Framework\TestCase;
 use \Codeages\CacheSync\Database\PDODatabase;
@@ -14,7 +16,7 @@ class PDODatabaseTest extends TestCase
     public function setUp()
     {
         $dsn = sprintf('mysql:dbname=%s;host=%s', $_ENV['DB_NAME'], $_ENV['DB_HOST']);
-        $this->pdo = $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
+        $this->pdo = $pdo = new \PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
         $pdo->beginTransaction();
     }
 
