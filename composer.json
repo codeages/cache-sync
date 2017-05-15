@@ -1,4 +1,8 @@
 {
+    "name": "codeages/cache-sync",
+    "description": "Cache Sync",
+    "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Codeages\\CacheSync\\": "src/"

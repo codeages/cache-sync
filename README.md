@@ -1,6 +1,8 @@
 Cache Sync
 ==========
 
+[![Build Status](https://travis-ci.org/codeages/cache-sync.svg?branch=master)](https://travis-ci.org/codeages/cache-sync)
+
 ## Usage
 
 **创建Cache同步记录表**
