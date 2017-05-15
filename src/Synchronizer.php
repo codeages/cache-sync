@@ -9,7 +9,7 @@ class Synchronizer
 
     protected $options;
 
-    public function __construct(Database $db, Cache $cache,  $table, array $options)
+    public function __construct(Database $db, Cache $cache, $table, array $options)
     {
         $this->db = $db;
         $this->cache = $cache;
