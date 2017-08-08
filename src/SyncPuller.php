@@ -1,7 +1,7 @@
 <?php
 namespace Codeages\CacheSync;
 
-class Synchronizer
+class SyncPuller
 {
     protected $db;
 
@@ -17,21 +17,7 @@ class Synchronizer
         $this->options = $options;
     }
 
-    public function push($op, $key, $value = null)
-    {
-        $params = array(
-            'op' => $op,
-            'k' => $key,
-            'v' => empty($value) ? '' : $value,
-            'created_time' => time(),
-        );
-
-        $sql = "INSERT INTO {$this->table} (`op`, `k`, `v`, `created_time`) VALUES (:op, :k, :v, :created_time);";
-
-        return $this->db->execute($sql, $params);
-    }
-
-    public function sync($limit = 100)
+    public function pull($limit = 100)
     {
         $limit = intval($limit);
         $cursor = $this->getCursor();

@@ -40,13 +40,15 @@ class BaseTestCase extends TestCase
                 $dbal,
                 $dbalDatabase,
                 $redisCache,
-                new Synchronizer($dbalDatabase, $redisCache, $_ENV['DB_TABLE'], $options),
+                new SyncPusher($dbalDatabase, $_ENV['DB_TABLE']),
+                new SyncPuller($dbalDatabase, $redisCache, $_ENV['DB_TABLE'], $options),
             ),
             array(
                 $pdo,
                 $pdoDatabase,
                 $redisCache,
-                new Synchronizer($pdoDatabase, $redisCache, $_ENV['DB_TABLE'], $options),
+                new SyncPusher($pdoDatabase, $_ENV['DB_TABLE']),
+                new SyncPuller($pdoDatabase, $redisCache, $_ENV['DB_TABLE'], $options),
             ),
         );
     }

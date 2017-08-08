@@ -20,7 +20,7 @@ class SyncWorker implements IWorker
 
     public function execute($job)
     {
-        $this->container['cache_sync']->sync(self::SYNC_PER_LIMIT);
+        $this->container['cache_sync_puller']->pull(self::SYNC_PER_LIMIT);
 
         return ['code' => IWorker::RETRY, 'delay' => self::DELAY];
     }
