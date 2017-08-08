@@ -19,10 +19,10 @@ class SyncPusher
             'op' => $op,
             'k' => $key,
             'v' => empty($value) ? '' : $value,
-            'created_time' => time(),
+            't' => time(),
         );
 
-        $sql = "INSERT INTO {$this->table} (`op`, `k`, `v`, `created_time`) VALUES (:op, :k, :v, :created_time);";
+        $sql = "INSERT INTO {$this->table} (`op`, `k`, `v`, `t`) VALUES (:op, :k, :v, :t);";
 
         return $this->db->execute($sql, $params);
     }

@@ -46,11 +46,11 @@ class PDODatabaseTest extends TestCase
 
     protected function insertFakeRow(Database $db)
     {
-        return $db->execute("INSERT INTO {$_ENV['DB_TABLE']} (`op`, `k`, `v`, `created_time`) VALUES (:op, :k, :v, :created_time)", array(
+        return $db->execute("INSERT INTO {$_ENV['DB_TABLE']} (`op`, `k`, `v`, `t`) VALUES (:op, :k, :v, :t)", array(
             'op' => 'set',
             'k' => 'test key',
             'v' => 'test value',
-            'created_time' => time(),
+            't' => time(),
         ));
     }
 }
