@@ -1,4 +1,5 @@
 <?php
+
 namespace Codeages\CacheSync;
 
 class SyncPuller
@@ -28,10 +29,10 @@ class SyncPuller
         foreach ($rows as $row) {
             if ($row['op'] === 'del') {
                 $this->cache->del($row['k']);
-                $synced++;
+                ++$synced;
             } elseif ($row['op'] === 'set') {
                 $this->cache->set($row['k'], $row['v']);
-                $synced++;
+                ++$synced;
             }
         }
 
@@ -47,6 +48,7 @@ class SyncPuller
         if (!file_exists($path)) {
             return 0;
         }
+
         return intval(file_get_contents($path));
     }
 

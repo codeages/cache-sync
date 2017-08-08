@@ -1,4 +1,5 @@
 <?php
+
 namespace Codeages\CacheSync;
 
 use PHPUnit\Framework\TestCase;

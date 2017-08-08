@@ -1,4 +1,5 @@
 <?php
+
 namespace Codeages\CacheSync\Database;
 
 use Codeages\CacheSync\Database;
@@ -19,6 +20,7 @@ class DBALDatabase implements Database
     public function query($sql, $params = array())
     {
         $stmt = $this->dbal->executeQuery($sql, $params);
+
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 

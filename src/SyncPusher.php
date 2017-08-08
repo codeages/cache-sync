@@ -1,4 +1,5 @@
 <?php
+
 namespace Codeages\CacheSync;
 
 class SyncPusher
