@@ -1,7 +1,7 @@
 <?php
 namespace Codeages\CacheSync;
 
-class SyncWorkerTest extends BaseTestCase
+class SyncPullWorkerTest extends BaseTestCase
 {
     /**
      * @dataProvider provider
@@ -20,7 +20,7 @@ class SyncWorkerTest extends BaseTestCase
         $container = new \Pimple\Container();
         $container['cache_sync_puller'] = $puller;
 
-        $worker = new SyncWorker();
+        $worker = new SyncPullWorker();
         $worker->setContainer($container);
 
         $job = ['id' => 1, 'body' => []];

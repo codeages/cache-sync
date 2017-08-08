@@ -5,7 +5,7 @@ namespace Codeages\CacheSync;
 use Codeages\Plumber\IWorker;
 use Pimple\Container;
 
-class SyncWorker implements IWorker
+class SyncPullWorker implements IWorker
 {
     const DELAY = 1;
 
