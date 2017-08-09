@@ -8,10 +8,12 @@ class SyncPusher
 
     protected $table;
 
-    public function __construct(Database $db, $table)
+    public function __construct(Database $db, array $options = [])
     {
         $this->db = $db;
-        $this->table = $table;
+        $this->options = array_merge([
+            'table' => 'cache_sync',
+        ], $options);
     }
 
     public function push($op, $key, $value = null)
@@ -23,7 +25,7 @@ class SyncPusher
             't' => time(),
         );
 
-        $sql = "INSERT INTO {$this->table} (`op`, `k`, `v`, `t`) VALUES (:op, :k, :v, :t);";
+        $sql = "INSERT INTO {$this->options['table']} (`op`, `k`, `v`, `t`) VALUES (:op, :k, :v, :t);";
 
         return $this->db->execute($sql, $params);
     }

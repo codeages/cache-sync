@@ -10,19 +10,24 @@ class SyncPuller
 
     protected $options;
 
-    public function __construct(Database $db, Cache $cache, $table, array $options)
+    public function __construct(Database $db, Cache $cache, array $options = [])
     {
         $this->db = $db;
         $this->cache = $cache;
-        $this->table = $table;
-        $this->options = $options;
+        $this->options = array_merge([
+            'table' => 'cache_sync',
+        ], $options);
+
+        if (empty($options['cursor_file'])) {
+            throw new \InvalidArgumentException('cursor_file option must be give.');
+        }
     }
 
     public function pull($limit = 100)
     {
         $limit = intval($limit);
         $cursor = $this->getCursor();
-        $sql = "SELECT * FROM {$this->table} WHERE id > {$cursor} ORDER BY id ASC LIMIT {$limit}";
+        $sql = "SELECT * FROM {$this->options['table']} WHERE id > {$cursor} ORDER BY id ASC LIMIT {$limit}";
 
         $synced = 0;
         $rows = $this->db->query($sql);

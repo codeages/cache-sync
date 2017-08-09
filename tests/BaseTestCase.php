@@ -33,6 +33,7 @@ class BaseTestCase extends TestCase
         $redisCache = new RedisCache($redis);
 
         $options = array(
+            'table' => $_ENV['DB_TABLE'],
             'cursor_file' => tempnam(sys_get_temp_dir(), 'cache_sync_cursor_'),
         );
 
@@ -41,15 +42,15 @@ class BaseTestCase extends TestCase
                 $dbal,
                 $dbalDatabase,
                 $redisCache,
-                new SyncPusher($dbalDatabase, $_ENV['DB_TABLE']),
-                new SyncPuller($dbalDatabase, $redisCache, $_ENV['DB_TABLE'], $options),
+                new SyncPusher($dbalDatabase, $options),
+                new SyncPuller($dbalDatabase, $redisCache, $options),
             ),
             array(
                 $pdo,
                 $pdoDatabase,
                 $redisCache,
-                new SyncPusher($pdoDatabase, $_ENV['DB_TABLE']),
-                new SyncPuller($pdoDatabase, $redisCache, $_ENV['DB_TABLE'], $options),
+                new SyncPusher($pdoDatabase, $options),
+                new SyncPuller($pdoDatabase, $redisCache, $options),
             ),
         );
     }
