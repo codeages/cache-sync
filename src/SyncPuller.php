@@ -55,8 +55,11 @@ class SyncPuller
             }
         }
 
-        $last = end($rows);
-        $this->saveCursor($last['id']);
+        if (!empty($rows)) {
+            $last = end($rows);
+
+            $this->saveCursor($last['id']);
+        }
 
         return $synced;
     }
