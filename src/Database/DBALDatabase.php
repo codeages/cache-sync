@@ -28,4 +28,12 @@ class DBALDatabase implements Database
     {
         return $this->dbal->executeUpdate($sql, $params);
     }
+
+    public function reconnect()
+    {
+        if ($this->dbal->ping() === false) {
+            $this->dbal->close();
+            $this->dbal->connect();
+        }
+    }
 }

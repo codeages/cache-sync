@@ -6,7 +6,15 @@ use Redis;
 
 class SyncPuller
 {
+    /**
+     * @var \Codeages\CacheSync\Database
+     */
     protected $db;
+
+    /**
+     * @var \Codeages\CacheSync\Cache
+     */
+    protected $cache;
 
     protected $table;
 
@@ -33,8 +41,11 @@ class SyncPuller
         $sql = "SELECT * FROM {$this->options['table']} WHERE id > {$cursor} ORDER BY id ASC LIMIT {$limit}";
 
         $synced = 0;
+
+        $this->db->reconnect();
         $rows = $this->db->query($sql);
         foreach ($rows as $row) {
+            $this->cache->reconnect();
             if ($row['op'] === 'del') {
                 $this->cache->del($row['k']);
                 ++$synced;

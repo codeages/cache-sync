@@ -45,4 +45,9 @@ class PDODatabase implements Database
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function reconnect()
+    {
+        
+    }
 }

@@ -62,6 +62,11 @@ class RedisCache implements Cache
         }
     }
 
+    public function instance()
+    {
+        return $this->redis;
+    }
+    
     protected function connect()
     {
         if ($this->options['persistent']) {
@@ -71,4 +76,5 @@ class RedisCache implements Cache
         }
         $this->redis->setOption(Redis::OPT_SERIALIZER, $this->options['serializer']);
     }
+
 }

@@ -29,4 +29,14 @@ class RedisCacheTest extends TestCase
         $deleted = $this->cache->del('test key');
         $this->assertEquals(1, $deleted);
     }
+
+    public function testReconnect()
+    {
+        $this->cache->instance()->close();
+        $this->cache->reconnect();
+
+        $this->cache->set('test key', 'test value');
+        $value = $this->cache->get('test key');
+        $this->assertEquals('test value', $value);
+    }
 }
