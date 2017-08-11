@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.3 (2017-08-11)
+
+* 修复 `SyncPuller` 游标设置错误的问题。
+
 ## 1.0.2 (2017-08-11)
 
 * `Database` 、 `Cache` 加入 `reconnect` 逻辑。
