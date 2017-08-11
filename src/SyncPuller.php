@@ -2,6 +2,8 @@
 
 namespace Codeages\CacheSync;
 
+use Redis;
+
 class SyncPuller
 {
     protected $db;
@@ -16,6 +18,7 @@ class SyncPuller
         $this->cache = $cache;
         $this->options = array_merge([
             'table' => 'cache_sync',
+            'redis_serializer' => Redis::SERIALIZER_PHP,
         ], $options);
 
         if (empty($options['cursor_file'])) {

@@ -13,9 +13,7 @@ class RedisCacheTest extends TestCase
 
     public function setUp()
     {
-        $redis = new \Redis();
-        $redis->connect($_ENV['REDIS_HOST'], $_ENV['REDIS_PORT']);
-        $this->cache = new RedisCache($redis);
+        $this->cache = new RedisCache($_ENV['REDIS_HOST'], $_ENV['REDIS_PORT']);
         $this->cache->flush();
     }
 

@@ -11,4 +11,9 @@ interface Cache
     public function del($key);
 
     public function flush();
+
+    /**
+     * 如果连接已断开，就重连。
+     */
+    public function reconnect();
 }

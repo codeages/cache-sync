@@ -28,9 +28,7 @@ class BaseTestCase extends TestCase
         );
         $pdoDatabase = new PDODatabase($pdo);
 
-        $redis = new \Redis();
-        $redis->connect($_ENV['REDIS_HOST'], $_ENV['REDIS_PORT']);
-        $redisCache = new RedisCache($redis);
+        $redisCache = new RedisCache($_ENV['REDIS_HOST'], $_ENV['REDIS_PORT']);
 
         $options = array(
             'table' => $_ENV['DB_TABLE'],
