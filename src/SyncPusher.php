@@ -21,7 +21,7 @@ class SyncPusher
         $params = array(
             'op' => $op,
             'k' => $key,
-            'v' => empty($value) ? '' : $value,
+            'v' => empty($value) ? '' : serialize($value),
             't' => time(),
         );
 

@@ -50,6 +50,9 @@ class SyncPuller
                 $this->cache->del($row['k']);
                 ++$synced;
             } elseif ($row['op'] === 'set') {
+                if ($row['v'] !== '') {
+                    $row['v'] = unserialize($row['v']);
+                }
                 $this->cache->set($row['k'], $row['v']);
                 ++$synced;
             }

@@ -13,13 +13,16 @@ class SyncPusherTest extends BaseTestCase
         $conn->beginTransaction();
 
         $pushed = $pusher->push('set', 'test key 1', 'test value 1');
-        $pushed = $pusher->push('set', 'test key 2', 'test value 2');
+        $pushed = $pusher->push('set', 'test key 2', array('hello' => 'world'));
 
         $pulled = $puller->pull(100);
         $this->assertEquals(2, $pulled);
 
         $value = $cache->get('test key 1');
         $this->assertEquals('test value 1', $value);
+
+        $value = $cache->get('test key 2');
+        $this->assertEquals(array('hello' => 'world'), $value);
 
         $conn->rollBack();
     }
